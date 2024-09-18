@@ -7,8 +7,9 @@
  * See a full list of supported triggers at https://firebase.google.com/docs/functions
  */
 
-const {onRequest} = require("firebase-functions/v2/https");
-const logger = require("firebase-functions/logger");
+// Supprimez ou commentez complètement ces lignes
+// const {onRequest} = require("firebase-functions/v2/https");
+// const logger = require("firebase-functions/logger");
 
 // Create and deploy your first functions
 // https://firebase.google.com/docs/functions/get-started
@@ -17,3 +18,15 @@ const logger = require("firebase-functions/logger");
 //   logger.info("Hello logs!", {structuredData: true});
 //   response.send("Hello from Firebase!");
 // });
+
+// Si vous n'avez pas de fonctions actives, vous pouvez laisser ce fichier vide
+// ou ajouter un commentaire expliquant que les fonctions seront ajoutées plus tard
+
+// Exemple de fonction commentée :
+/*
+const functions = require('firebase-functions');
+
+exports.helloWorld = functions.https.onRequest((request, response) => {
+  response.send("Hello from Firebase!");
+});
+*/
