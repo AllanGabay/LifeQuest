@@ -138,8 +138,7 @@ body {
 
 .avatar-stats {
   position: relative;
-  width: 300px;
-  height: 300px;
+  z-index: 1;
 }
 
 .stat-icons {
@@ -149,12 +148,11 @@ body {
   width: 100%;
   height: 100%;
   pointer-events: none;
+  z-index: 5;
 }
 
 .stat-icon {
-  width: 30px;
-  height: 30px;
-  position: absolute;
+  pointer-events: auto;
 }
 
 /* Styles pour améliorer le contraste du texte */
@@ -170,4 +168,19 @@ body {
 .rpg-button {
   font-size: 14px;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+@import 'react-tooltip/dist/react-tooltip.css';
+
+/* ... autres styles ... */
+
+.react-tooltip {
+  z-index: 9999;
+  background-color: rgba(0, 0, 0, 0.8) !important;
+  color: white !important;
+  padding: 8px 12px !important;
+  border-radius: 4px !important;
+  font-size: 14px !important;
+  max-width: 250px !important;
+  text-align: center !important;
 }
