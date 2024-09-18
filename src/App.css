@@ -52,7 +52,7 @@ body {
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  background-image: url('path/to/your/pixel-art-background.png');
+  /* background-image: url('../assets/pixel-art-background.png'); */
   background-size: cover;
   background-position: center;
 }

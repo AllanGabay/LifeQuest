@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
 import { auth } from './firebaseConfig';
 import './App.css';
+import backgroundImage from './assets/pixel-art-background.png';
 
 function App() {
   const [user, setUser] = useState(null);
@@ -32,7 +33,7 @@ function App() {
 
   if (user) {
     return (
-      <div className="rpg-container">
+      <div className="rpg-container" style={{ backgroundImage: `url(${backgroundImage})` }}>
         <div className="rpg-dialog">
           <h1>Bienvenue, {user.displayName}!</h1>
           <p>Vous êtes connecté et prêt pour l'aventure!</p>
@@ -42,7 +43,7 @@ function App() {
   }
 
   return (
-    <div className="rpg-container">
+    <div className="rpg-container" style={{ backgroundImage: `url(${backgroundImage})` }}>
       <div className="rpg-dialog">
         <h1>Bienvenue, aventurier!</h1>
         <p>Connectez-vous pour commencer votre quête.</p>
