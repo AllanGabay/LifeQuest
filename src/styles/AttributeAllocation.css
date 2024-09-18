@@ -1,0 +1,31 @@
+.attribute-allocation {
+  width: 100%;
+  max-width: 400px;
+}
+
+.attribute-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.attribute-row button {
+  padding: 5px 10px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.attribute-row button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+.attribute-row span:last-child {
+  cursor: help;
+  color: #0000FF;
+  font-weight: bold;
+}
