@@ -27,14 +27,15 @@ const AvatarCreation = ({ onAvatarCreated }) => {
     const user = auth.currentUser;
     if (user) {
       try {
+        const newAvatar = {
+          hairstyle: selectedHairstyle,
+          attributes: attributes
+        };
         await setDoc(doc(db, 'users', user.uid), {
-          avatar: {
-            hairstyle: selectedHairstyle,
-            attributes: attributes
-          }
+          avatar: newAvatar
         }, { merge: true });
         console.log('Avatar créé avec succès !');
-        onAvatarCreated(); // Appeler cette fonction pour informer le composant parent
+        onAvatarCreated(newAvatar); // Passer le nouvel avatar au composant parent
       } catch (error) {
         console.error("Erreur lors de la création de l'avatar:", error);
       }

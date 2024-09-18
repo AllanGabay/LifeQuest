@@ -97,3 +97,77 @@ body {
   margin-top: 10px;
   border: 2px solid #ffffff;
 }
+
+/* ... autres styles ... */
+
+.avatar-display {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.8);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.avatar-image {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  margin-bottom: 20px;
+}
+
+.avatar-image img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.avatar-image .base-avatar {
+  z-index: 1;
+}
+
+.avatar-image .hairstyle {
+  z-index: 2;
+}
+
+.avatar-stats {
+  position: relative;
+  width: 300px;
+  height: 300px;
+}
+
+.stat-icons {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.stat-icon {
+  width: 30px;
+  height: 30px;
+  position: absolute;
+}
+
+/* Styles pour améliorer le contraste du texte */
+.rpg-dialog, .avatar-display {
+  color: #ffffff;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.rpg-dialog h1, .rpg-dialog p {
+  margin-bottom: 10px;
+}
+
+.rpg-button {
+  font-size: 14px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
