@@ -36,3 +36,60 @@
     transform: rotate(360deg);
   }
 }
+
+/* Ajout des styles RPG Pixel Art */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+body {
+  font-family: 'Press Start 2P', cursive;
+  background-color: #3f3f74;
+  color: #ffffff;
+}
+
+.rpg-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-image: url('path/to/your/pixel-art-background.png');
+  background-size: cover;
+  background-position: center;
+}
+
+.rpg-dialog {
+  background-color: #000000;
+  border: 4px solid #ffffff;
+  padding: 20px;
+  margin-bottom: 20px;
+  max-width: 80%;
+  text-align: center;
+}
+
+.rpg-button {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  font-family: 'Press Start 2P', cursive;
+  box-shadow: 0 8px 0 #45a049, 0 15px 20px rgba(0,0,0,.35);
+  transition: box-shadow .1s ease-in-out;
+}
+
+.rpg-button:active {
+  box-shadow: 0 4px 0 #45a049, 0 8px 6px rgba(0,0,0,.45);
+}
+
+.error-message {
+  background-color: #ff0000;
+  color: #ffffff;
+  padding: 10px;
+  margin-top: 10px;
+  border: 2px solid #ffffff;
+}
