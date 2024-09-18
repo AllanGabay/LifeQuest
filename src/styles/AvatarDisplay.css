@@ -1,0 +1,59 @@
+.avatar-display-container {
+  background-color: rgba(0, 0, 0, 0.7);
+  border: 2px solid #ffffff;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 20px;
+  display: inline-block;
+}
+
+.avatar-display {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.avatar-image {
+  position: relative;
+  width: 150px;
+  height: 150px;
+}
+
+.base-avatar,
+.hairstyle {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.avatar-stats {
+  position: relative;
+}
+
+.stat-icons {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.stat-icon {
+  pointer-events: auto;
+}
+
+/* Styles pour les tooltips */
+.react-tooltip {
+  z-index: 9999 !important;
+  opacity: 1 !important;
+  background-color: rgba(0, 0, 0, 0.8) !important;
+  color: white !important;
+  padding: 8px 12px !important;
+  border-radius: 4px !important;
+  font-size: 14px !important;
+  max-width: 250px !important;
+  text-align: center !important;
+}

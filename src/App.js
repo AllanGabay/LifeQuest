@@ -6,6 +6,7 @@ import './App.css';
 import backgroundImage from './assets/pixel-art-background.png';
 import AvatarCreation from './components/AvatarCreation';
 import AvatarDisplay from './components/AvatarDisplay';
+import Dashboard from './components/Dashboard';
 
 function App() {
   const [user, setUser] = useState(null);
@@ -53,35 +54,42 @@ function App() {
     setAvatar(newAvatar);
   };
 
-  if (user) {
+  if (!user) {
     return (
       <div className="rpg-container" style={{ backgroundImage: `url(${backgroundImage})` }}>
-        {avatar ? (
-          <>
-            <div className="rpg-dialog">
-              <h1>Bienvenue, {user.displayName}!</h1>
-              <p>Vous êtes connecté et prêt pour l'aventure!</p>
-            </div>
-            <AvatarDisplay avatar={avatar} />
-          </>
-        ) : (
-          <AvatarCreation onAvatarCreated={handleAvatarCreated} />
-        )}
-        <button onClick={handleSignOut} className="rpg-button">Se déconnecter</button>
+        <div className="welcome-section">
+          <div className="rpg-dialog">
+            <h1>Bienvenue, aventurier!</h1>
+            <p>Connectez-vous pour commencer votre quête.</p>
+          </div>
+          <button className="rpg-button" onClick={signInWithGoogle}>
+            Se connecter avec Google
+          </button>
+        </div>
+        {error && <div className="error-message">{error}</div>}
       </div>
     );
   }
 
   return (
     <div className="rpg-container" style={{ backgroundImage: `url(${backgroundImage})` }}>
-      <div className="rpg-dialog">
-        <h1>Bienvenue, aventurier!</h1>
-        <p>Connectez-vous pour commencer votre quête.</p>
+      <div className="welcome-section">
+        <div className="rpg-dialog">
+          <h1>Bienvenue, {user.displayName}!</h1>
+          <p>Prêt pour l'aventure ?</p>
+        </div>
+        <button className="rpg-button" onClick={handleSignOut}>
+          Se déconnecter
+        </button>
       </div>
-      <button className="rpg-button" onClick={signInWithGoogle}>
-        Se connecter avec Google
-      </button>
-      {error && <div className="error-message">{error}</div>}
+      {avatar ? (
+        <>
+          <AvatarDisplay avatar={avatar} />
+          <Dashboard attributes={avatar.attributes} />
+        </>
+      ) : (
+        <AvatarCreation onAvatarCreated={handleAvatarCreated} />
+      )}
     </div>
   );
 }
