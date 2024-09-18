@@ -5,7 +5,7 @@ import { doc, setDoc } from 'firebase/firestore';
 import { db, auth } from '../firebaseConfig';
 import '../styles/AvatarCreation.css';
 
-const AvatarCreation = () => {
+const AvatarCreation = ({ onAvatarCreated }) => {
   const [selectedHairstyle, setSelectedHairstyle] = useState(0);
   const [attributes, setAttributes] = useState({
     'Bien-être': 0,
@@ -34,7 +34,7 @@ const AvatarCreation = () => {
           }
         }, { merge: true });
         console.log('Avatar créé avec succès !');
-        // Rediriger l'utilisateur ou mettre à jour l'interface utilisateur ici
+        onAvatarCreated(); // Appeler cette fonction pour informer le composant parent
       } catch (error) {
         console.error("Erreur lors de la création de l'avatar:", error);
       }

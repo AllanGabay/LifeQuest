@@ -4,11 +4,11 @@ import 'react-tooltip/dist/react-tooltip.css';
 import '../styles/AttributeAllocation.css';
 
 const categories = [
-  { name: 'Bien-être', description: 'Mesure ton équilibre entre ton corps et ton esprit. Améliore ta capacité à récupérer et réduit les pénalités liées à la fatigue ou au stress.' },
-  { name: 'Efficacité', description: 'Représente ta capacité à organiser et réaliser tes tâches. Augmente la rapidité et la précision dans l'accomplissement des tâches.' },
-  { name: 'Maîtrise', description: 'Te permet de débloquer des compétences spéciales. Augmente la vitesse d'apprentissage et renforce la capacité à acquérir de nouvelles compétences.' },
-  { name: 'Interaction', description: 'Mesure ta capacité à tisser des liens et à communiquer. Améliore les chances de succès lors des collaborations et des négociations.' },
-  { name: 'Résilience', description: 'La force qui te permet de continuer face aux difficultés. Réduit les impacts des échecs et augmente les récompenses pour les séries de réussites.' },
+  { name: 'Bien-être', description: "Mesure ton équilibre entre ton corps et ton esprit. Améliore ta capacité à récupérer et réduit les pénalités liées à la fatigue ou au stress." },
+  { name: 'Efficacité', description: "Représente ta capacité à organiser et réaliser tes tâches. Augmente la rapidité et la précision dans l'accomplissement des tâches." },
+  { name: 'Maîtrise', description: "Te permet de débloquer des compétences spéciales. Augmente la vitesse d'apprentissage et renforce la capacité à acquérir de nouvelles compétences." },
+  { name: 'Interaction', description: "Mesure ta capacité à tisser des liens et à communiquer. Améliore les chances de succès lors des collaborations et des négociations." },
+  { name: 'Résilience', description: "La force qui te permet de continuer face aux difficultés. Réduit les impacts des échecs et augmente les récompenses pour les séries de réussites." },
 ];
 
 const AttributeAllocation = ({ onAttributeChange }) => {

@@ -6,6 +6,7 @@
   background-color: #f0f0f0;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  color: #a56b39; /* Couleur de texte plus foncée */
 }
 
 .submit-button {
@@ -22,4 +23,27 @@
 
 .submit-button:hover {
   background-color: #45a049;
+}
+
+.attribute-row {
+  display: grid;
+  grid-template-columns: 1fr auto auto auto;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.attribute-row button {
+  width: 30px; /* Largeur fixe pour les boutons */
+  height: 30px; /* Hauteur fixe pour les boutons */
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.attribute-row span:last-child {
+  justify-self: end; /* Aligne le point d'interrogation à droite */
 }

@@ -29,3 +29,22 @@
   color: #0000FF;
   font-weight: bold;
 }
+
+/* Styles spécifiques pour les infobulles */
+[data-tooltip-id] {
+  position: relative;
+}
+
+.react-tooltip {
+  max-width: 250px !important;
+  white-space: pre-wrap !important;
+  word-wrap: break-word !important;
+  font-size: 12px !important;
+  line-height: 1.6 !important; /* Augmenté pour plus d'espace entre les lignes */
+  padding: 10px 14px !important; /* Augmenté pour plus d'espace autour du texte */
+  border-radius: 4px !important;
+  background-color: rgba(0, 0, 0, 0.8) !important;
+  color: white !important;
+  z-index: 9999 !important;
+  text-align: left !important; /* Aligné à gauche pour une meilleure lisibilité */
+}
