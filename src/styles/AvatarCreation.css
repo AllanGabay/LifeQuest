@@ -32,24 +32,18 @@
 }
 
 .attribute-row {
-  display: grid;
-  grid-template-columns: 1fr auto auto auto;
+  display: flex;
+  justify-content: space-between;
   align-items: center;
-  gap: 10px;
+  width: 100%;
   margin-bottom: 10px;
 }
 
-.attribute-row button {
-  width: 30px; /* Largeur fixe pour les boutons */
-  height: 30px; /* Hauteur fixe pour les boutons */
-  padding: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 18px;
-  font-weight: bold;
+.attribute-row label {
+  flex: 1;
 }
 
-.attribute-row span:last-child {
-  justify-self: end; /* Aligne le point d'interrogation à droite */
+.attribute-row input {
+  flex: 2;
+  margin-left: 10px;
 }

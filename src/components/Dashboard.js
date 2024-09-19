@@ -19,19 +19,26 @@ const Dashboard = ({ attributes }) => {
     <div className="dashboard">
       <h2>Tableau de bord</h2>
       <div className="categories-grid">
-        {categories.map((category) => (
-          <div key={category.name} className="category-card">
-            <img src={category.icon} alt={category.name} className="category-icon" />
-            <h3>{category.name}</h3>
-            <div className="experience-bar-container">
-              <div 
-                className="experience-bar" 
-                style={{ width: `${(attributes[category.name] / 5) * 100}%` }}
-              ></div>
+        {categories.map((category) => {
+          const level = attributes[category.name].level;
+          const experience = attributes[category.name].experience;
+          const experienceToNextLevel = 100; // Exemple: 100 points d'expérience pour monter de niveau
+
+          return (
+            <div key={category.name} className="category-card">
+              <img src={category.icon} alt={category.name} className="category-icon" />
+              <h3>{category.name}</h3>
+              <span className="level-text">Niveau {level}</span>
+              <div className="experience-bar-container">
+                <div 
+                  className="experience-bar" 
+                  style={{ width: `${(experience / experienceToNextLevel) * 100}%` }}
+                ></div>
+              </div>
+              <span className="experience-text">{experience} / {experienceToNextLevel} XP</span>
             </div>
-            <span className="experience-text">{attributes[category.name]} / 5</span>
-          </div>
-        ))}
+          );
+        })}
       </div>
     </div>
   );

@@ -32,20 +32,31 @@ function App() {
     const docRef = doc(db, 'users', userId);
     const docSnap = await getDoc(docRef);
     if (docSnap.exists() && docSnap.data().avatar) {
-      setAvatar(docSnap.data().avatar);
+      let loadedAvatar = docSnap.data().avatar;
+      
+      // Vérifier et convertir la structure si nécessaire
+      if (typeof loadedAvatar.attributes['Bien-être'] === 'number') {
+        const convertedAttributes = {};
+        for (const [key, value] of Object.entries(loadedAvatar.attributes)) {
+          convertedAttributes[key] = { level: value, experience: 0 };
+        }
+        loadedAvatar = { ...loadedAvatar, attributes: convertedAttributes };
+        
+        // Mettre à jour Firebase avec la nouvelle structure
+        await setDoc(doc(db, 'users', userId), { avatar: loadedAvatar }, { merge: true });
+      }
+      
+      setAvatar(loadedAvatar);
     } else {
       setAvatar(null);
     }
   };
 
   const handleAvatarCreated = async (newAvatar) => {
-    const avatarWithAttributes = {
-      ...newAvatar,
-      attributes: newAvatar.attributes || {} // Assurez-vous que attributes existe toujours
-    };
-    setAvatar(avatarWithAttributes);
+    console.log("Avatar créé:", newAvatar); // Ajoutez ce log
+    setAvatar(newAvatar);
     if (user) {
-      await setDoc(doc(db, 'users', user.uid), { avatar: avatarWithAttributes }, { merge: true });
+      await setDoc(doc(db, 'users', user.uid), { avatar: newAvatar }, { merge: true });
     }
   };
 
@@ -69,6 +80,47 @@ function App() {
       console.error("Erreur lors de la déconnexion:", error);
     });
   };
+
+  const updateAttribute = (category, experienceGained) => {
+    setAvatar(prevAvatar => {
+      const updatedAttributes = { ...prevAvatar.attributes };
+      const currentAttribute = updatedAttributes[category];
+      
+      let newExperience = currentAttribute.experience + experienceGained;
+      let newLevel = currentAttribute.level;
+      
+      while (newExperience >= 100) {
+        newLevel++;
+        newExperience -= 100;
+      }
+      
+      updatedAttributes[category] = { level: newLevel, experience: newExperience };
+      
+      const updatedAvatar = { ...prevAvatar, attributes: updatedAttributes };
+      
+      console.log("Mise à jour des attributs:", updatedAvatar); // Ajoutez ce log
+      
+      // Mise à jour dans Firebase
+      if (user) {
+        setDoc(doc(db, 'users', user.uid), { avatar: updatedAvatar }, { merge: true });
+      }
+      
+      return updatedAvatar;
+    });
+  };
+
+  const renderDraggable = (content, defaultPosition, panelClass) => (
+    <Draggable
+      bounds="parent"
+      defaultPosition={defaultPosition}
+      handle=".drag-handle"
+    >
+      <div className={`draggable-panel ${panelClass}`}>
+        <div className="drag-handle">Déplacer</div>
+        {content}
+      </div>
+    </Draggable>
+  );
 
   if (loading) {
     return <div>Chargement...</div>;
@@ -95,18 +147,18 @@ function App() {
         {user && !avatar && (
           <AvatarCreation onAvatarCreated={handleAvatarCreated} />
         )}
-        {user && avatar && avatar.attributes && (
+        {user && avatar && avatar.attributes && Object.keys(avatar.attributes).length > 0 && (
           <div className="panels-container">
-            <Draggable bounds="parent" defaultPosition={{x: -305, y: 111}}>
-              <div className="draggable-panel avatar-panel">
-                <AvatarDisplay avatar={avatar} />
-              </div>
-            </Draggable>
-            <Draggable bounds="parent" defaultPosition={{x: 464, y: 0}}>
-              <div className="draggable-panel dashboard-panel">
-                <Dashboard attributes={avatar.attributes} />
-              </div>
-            </Draggable>
+            {renderDraggable(
+              <AvatarDisplay avatar={avatar} />,
+              {x: -305, y: 111},
+              'avatar-panel'
+            )}
+            {renderDraggable(
+              <Dashboard attributes={avatar.attributes} />,
+              {x: 0, y: 400},
+              'dashboard-panel'
+            )}
           </div>
         )}
       </div>

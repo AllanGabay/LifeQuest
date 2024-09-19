@@ -29,12 +29,18 @@ const categories = [
 const AvatarDisplay = ({ avatar }) => {
   const { hairstyle, attributes } = avatar;
 
+  console.log("Attributs de l'avatar:", attributes); // Ajoutez ce log pour vérifier les attributs
+
+  const categoryOrder = ['Bien-être', 'Efficacité', 'Maîtrise', 'Interaction', 'Résilience'];
+
+  const orderedData = categoryOrder.map(category => attributes[category]?.level || 0);
+
   const data = {
-    labels: ['Bien-être', 'Efficacité', 'Maîtrise', 'Interaction', 'Résilience'],
+    labels: categoryOrder,
     datasets: [
       {
-        label: 'Caractéristiques',
-        data: Object.values(attributes),
+        label: 'Niveaux',
+        data: orderedData,
         backgroundColor: 'rgba(255, 99, 132, 0.5)',
         borderColor: 'rgba(255, 99, 132, 1)',
         borderWidth: 2,
@@ -56,15 +62,15 @@ const AvatarDisplay = ({ avatar }) => {
           color: 'rgba(255, 255, 255, 0.3)'
         },
         pointLabels: {
-          color: 'rgba(255, 255, 255, 0)',
+          color: 'rgba(255, 255, 255, 0.8)',
           font: {
-            size: 1
+            size: 12
           }
         },
         ticks: {
           display: false,
           beginAtZero: true,
-          max: 5,
+          max: Math.max(...orderedData) + 1, // Ajuster le maximum en fonction du niveau le plus élevé
           min: 0
         }
       }
