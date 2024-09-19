@@ -1,47 +1,57 @@
 .dashboard {
   background-color: rgba(0, 0, 0, 0.7);
   border: 2px solid #ffffff;
-  padding: 2%; /* Utilisez des pourcentages pour le padding */
+  padding: 1%; /* Réduire le padding de moitié */
   border-radius: 10px;
   color: white;
   margin: 0;
   box-sizing: border-box; /* Inclure le padding et la bordure dans la taille totale */
-  height: 100%; /* S'adapter à la hauteur du conteneur */
+  /* height: 50%; /* Réduire la hauteur de moitié */
+  /* width: 50%; /* Réduire la largeur de moitié */
   overflow: auto; /* Gérer le débordement */
 }
 
 .dashboard h2 {
   text-align: center;
-  margin-bottom: 2%; /* Utilisez des pourcentages pour les marges */
-  font-size: 2vw; /* Utilisez des unités flexibles pour la taille de la police */
+  margin-bottom: 1%; /* Réduire les marges de moitié */
+  font-size: 1vw; /* Réduire la taille de la police de moitié */
 }
 
 .categories-grid {
   display: flex;
   justify-content: space-between;
-  gap: 2%; /* Utilisez des pourcentages pour l'espacement */
+  gap: 1%; /* Réduire l'espacement de moitié */
 }
 
 .category-card {
   background-color: rgba(255, 255, 255, 0.1);
   border-radius: 8px;
-  padding: 2%; /* Utilisez des pourcentages pour le padding */
+  padding: 1%; /* Réduire le padding de moitié */
   text-align: center;
   flex: 1; /* Chaque carte prend une part égale de l'espace disponible */
-  /* min-width: 15%; /* Ajustez cette valeur selon vos besoins */
+  min-width: 7.5%; /* Réduire la largeur minimale de moitié */
 }
 
 .category-icon {
-  width: 10vw; /* Utilisez des unités flexibles pour la taille des icônes */
-  height: 10vw; /* Utilisez des unités flexibles pour la taille des icônes */
-  margin-bottom: 2%; /* Utilisez des pourcentages pour les marges */
+  width: 2.5vw; /* Réduire la taille des icônes de moitié */
+  height: 2.5vw; /* Réduire la taille des icônes de moitié */
+  margin-bottom: 1%; /* Réduire les marges de moitié */
+}
+
+.category-card h3 {
+  font-size: 0.8vw; /* Ajuster la taille de la police pour les titres des catégories */
+  margin: 0.5% 0; /* Ajouter des marges pour espacer les titres */
+}
+
+.level-text {
+  font-size: 0.6vw; /* Réduire la taille de la police de moitié */
 }
 
 .experience-bar-container {
   background-color: rgba(255, 255, 255, 0.2);
-  height: 2vw; /* Utilisez des unités flexibles pour la hauteur */
+  height: 1vw; /* Réduire la hauteur de moitié */
   border-radius: 10px;
-  margin-top: 2%; /* Utilisez des pourcentages pour les marges */
+  margin-top: 1%; /* Réduire les marges de moitié */
   overflow: hidden;
 }
 
@@ -54,6 +64,6 @@
 
 .experience-text {
   display: block;
-  margin-top: 2%; /* Utilisez des pourcentages pour les marges */
-  font-size: 1.5vw; /* Utilisez des unités flexibles pour la taille de la police */
+  margin-top: 1%; /* Réduire les marges de moitié */
+  font-size: 0.6vw; /* Réduire la taille de la police de moitié */
 }

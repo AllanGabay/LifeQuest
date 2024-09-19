@@ -19,8 +19,8 @@
 
 .avatar-image {
   position: relative;
-  width: 20vw; /* Utilisez des unités flexibles pour la taille de l'image */
-  height: 20vw; /* Utilisez des unités flexibles pour la taille de l'image */
+  width: 10vw; /* Réduire de moitié la taille de l'image */
+  height: 10vw; /* Réduire de moitié la taille de l'image */
   margin-bottom: 2%; /* Ajouté pour espacer les éléments */
 }
 

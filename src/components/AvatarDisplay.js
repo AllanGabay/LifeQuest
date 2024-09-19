@@ -87,7 +87,7 @@ const AvatarDisplay = ({ avatar }) => {
         }
       }
     },
-    maintainAspectRatio: false
+    maintainAspectRatio: true
   };
 
   return (

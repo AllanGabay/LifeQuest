@@ -84,6 +84,7 @@ body {
   padding: 20px;
   display: flex;
   flex-direction: column;
+  width: 100%;
   /* width: 300px; /* Définir une largeur fixe */
   /* height: 300px; /* Définir une hauteur fixe */
 }
@@ -100,6 +101,7 @@ body {
 
 .avatar-panel {
   z-index: 10;
+  width: 50vh;
 }
 
 .dashboard-panel {
