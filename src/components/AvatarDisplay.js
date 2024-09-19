@@ -91,41 +91,19 @@ const AvatarDisplay = ({ avatar }) => {
   };
 
   return (
-    <div className="avatar-display-container">
-      <div className="avatar-display">
-        <div className="avatar-image">
-          <img src={baseAvatar} alt="Base Avatar" className="base-avatar" />
-          <img src={hairstyles[hairstyle]} alt="Hairstyle" className="hairstyle" />
-        </div>
-        <div className="avatar-stats">
-          <Radar data={data} options={options} />
-          {/* <div className="stat-icons">
-            {categoryImages.map((img, index) => (
-              <React.Fragment key={index}>
-                <img 
-                  src={img} 
-                  alt={data.labels[index]} 
-                  className="stat-icon"
-                  data-tooltip-id={`stat-tooltip-${index}`}
-                  data-tooltip-content={categories[index].description}
-                  style={{
-                    position: 'absolute',
-                    left: `${50 + 40 * Math.cos(index * Math.PI * 2 / 5 - Math.PI / 2)}%`,
-                    top: `${50 + 40 * Math.sin(index * Math.PI * 2 / 5 - Math.PI / 2)}%`,
-                    transform: 'translate(-50%, -50%)',
-                    width: '70px',//taille des icones
-                    height: '70px',
-                    cursor: 'pointer',
-                    zIndex: 10
-                  }}
-                />
-                <Tooltip id={`stat-tooltip-${index}`} />
-              </React.Fragment>
-            ))}
-          </div> */}
+    <>
+      <div className="avatar-display-container">
+        <div className="avatar-display">
+          <div className="avatar-image">
+            <img src={baseAvatar} alt="Base Avatar" className="base-avatar" />
+            <img src={hairstyles[hairstyle]} alt="Hairstyle" className="hairstyle" />
+          </div>
+          <div className="avatar-stats">
+            <Radar data={data} options={options} />
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

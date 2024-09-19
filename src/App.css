@@ -84,8 +84,7 @@ body {
   padding: 20px;
   display: flex;
   flex-direction: column;
-  width: 100%;
-  /* width: 300px; /* Définir une largeur fixe */
+    /* width: 300px; /* Définir une largeur fixe */
   /* height: 300px; /* Définir une hauteur fixe */
 }
 

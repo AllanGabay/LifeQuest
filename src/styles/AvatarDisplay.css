@@ -6,8 +6,9 @@
   margin: 0;
   display: inline-block;
   box-sizing: border-box; /* Inclure le padding et la bordure dans la taille totale */
-  height: 100%; /* S'adapter à la hauteur du conteneur */
-  /* overflow: auto; /* Gérer le débordement */
+  /* height: auto; /* Ajuster la hauteur automatiquement */
+  /* width: 80%; /* Augmenter la largeur */
+  /* overflow: auto; Gérer le débordement */ 
 }
 
 .avatar-display {
@@ -19,8 +20,8 @@
 
 .avatar-image {
   position: relative;
-  width: 10vw; /* Réduire de moitié la taille de l'image */
-  height: 10vw; /* Réduire de moitié la taille de l'image */
+  width: 8vw; /* Réduire la taille de l'image */
+  height: 8vw; /* Réduire la taille de l'image */
   margin-bottom: 2%; /* Ajouté pour espacer les éléments */
 }
 
@@ -35,8 +36,8 @@
 
 .avatar-stats {
   position: relative;
-  width: 100%; /* S'adapter à la largeur du conteneur */
-  height: 100%; /* S'adapter à la hauteur du conteneur */
+  width: 100%; /* Réduire la largeur du radar */
+  height: 100%; /* Réduire la hauteur du radar */
 }
 
 .stat-icons {
@@ -50,8 +51,8 @@
 
 .stat-icon {
   pointer-events: auto;
-  width: 10vw; /* Utilisez des unités flexibles pour la taille des icônes */
-  height: 10vw; /* Utilisez des unités flexibles pour la taille des icônes */
+  width: 5vw; /* Réduire la taille des icônes */
+  height: 5vw; /* Réduire la taille des icônes */
 }
 
 /* Styles pour les tooltips */

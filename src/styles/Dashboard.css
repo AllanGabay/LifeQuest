@@ -1,57 +1,57 @@
 .dashboard {
   background-color: rgba(0, 0, 0, 0.7);
   border: 2px solid #ffffff;
-  padding: 1%; /* Réduire le padding de moitié */
+  padding: 1%; /* Réduire le padding */
   border-radius: 10px;
   color: white;
   margin: 0;
   box-sizing: border-box; /* Inclure le padding et la bordure dans la taille totale */
-  /* height: 50%; /* Réduire la hauteur de moitié */
-  /* width: 50%; /* Réduire la largeur de moitié */
-  overflow: auto; /* Gérer le débordement */
+  height: auto; /* Ajuster la hauteur automatiquement */
+  width: 100%; /* Augmenter la largeur */
+  /* overflow: auto; Gérer le débordement */
 }
 
 .dashboard h2 {
   text-align: center;
-  margin-bottom: 1%; /* Réduire les marges de moitié */
-  font-size: 1vw; /* Réduire la taille de la police de moitié */
+  margin-bottom: 1%; /* Réduire les marges */
+  font-size: 1.5vw; /* Augmenter la taille de la police */
 }
 
 .categories-grid {
   display: flex;
   justify-content: space-between;
-  gap: 1%; /* Réduire l'espacement de moitié */
+  gap: 1%; /* Réduire l'espacement */
 }
 
 .category-card {
   background-color: rgba(255, 255, 255, 0.1);
   border-radius: 8px;
-  padding: 1%; /* Réduire le padding de moitié */
+  padding: 1%; /* Réduire le padding */
   text-align: center;
-  flex: 1; /* Chaque carte prend une part égale de l'espace disponible */
-  min-width: 7.5%; /* Réduire la largeur minimale de moitié */
+ /* flex: 1; *//* Chaque carte prend une part égale de l'espace disponible */
+  /* min-width: 15%; Augmenter la largeur minimale */
 }
 
 .category-icon {
-  width: 2.5vw; /* Réduire la taille des icônes de moitié */
-  height: 2.5vw; /* Réduire la taille des icônes de moitié */
-  margin-bottom: 1%; /* Réduire les marges de moitié */
+  width: 4vw; /* Réduire la taille des icônes */
+  height: 4vw; /* Réduire la taille des icônes */
+  margin-bottom: 1%; /* Réduire les marges */
 }
 
 .category-card h3 {
-  font-size: 0.8vw; /* Ajuster la taille de la police pour les titres des catégories */
+  font-size: 0.6vw; /* Augmenter la taille de la police pour les titres des catégories */
   margin: 0.5% 0; /* Ajouter des marges pour espacer les titres */
 }
 
 .level-text {
-  font-size: 0.6vw; /* Réduire la taille de la police de moitié */
+  font-size: 0.5vw; /* Augmenter la taille de la police */
 }
 
 .experience-bar-container {
   background-color: rgba(255, 255, 255, 0.2);
-  height: 1vw; /* Réduire la hauteur de moitié */
+  height: 1vw; /* Réduire la hauteur */
   border-radius: 10px;
-  margin-top: 1%; /* Réduire les marges de moitié */
+  margin-top: 15%; /* Réduire les marges */
   overflow: hidden;
 }
 
@@ -63,7 +63,7 @@
 }
 
 .experience-text {
-  display: block;
-  margin-top: 1%; /* Réduire les marges de moitié */
-  font-size: 0.6vw; /* Réduire la taille de la police de moitié */
+  /* display: block;
+  margin-top: 1%; Réduire les marges */
+  font-size: 0.5vw; /* Augmenter la taille de la police */
 }
