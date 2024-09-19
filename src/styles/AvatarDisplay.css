@@ -36,8 +36,8 @@
 
 .avatar-stats {
   position: relative;
-  width: 100%; /* Réduire la largeur du radar */
-  height: 100%; /* Réduire la hauteur du radar */
+  /* width: 100%; /* Réduire la largeur du radar */
+  /* height: 100%; Réduire la hauteur du radar */ 
 }
 
 .stat-icons {
