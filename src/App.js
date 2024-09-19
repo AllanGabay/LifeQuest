@@ -151,12 +151,12 @@ function App() {
           <div className="panels-container">
             {renderDraggable(
               <AvatarDisplay avatar={avatar} />,
-              {x: -305, y: 111},
+              {x: 0, y: 0},
               'avatar-panel'
             )}
             {renderDraggable(
               <Dashboard attributes={avatar.attributes} />,
-              {x: 0, y: 400},
+              {x: 0, y: 0},
               'dashboard-panel'
             )}
           </div>
