@@ -1,43 +1,47 @@
 .dashboard {
   background-color: rgba(0, 0, 0, 0.7);
   border: 2px solid #ffffff;
-  padding: 20px;
+  padding: 2%; /* Utilisez des pourcentages pour le padding */
   border-radius: 10px;
   color: white;
   margin: 0;
+  box-sizing: border-box; /* Inclure le padding et la bordure dans la taille totale */
+  height: 100%; /* S'adapter à la hauteur du conteneur */
+  overflow: auto; /* Gérer le débordement */
 }
 
 .dashboard h2 {
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 2%; /* Utilisez des pourcentages pour les marges */
+  font-size: 2vw; /* Utilisez des unités flexibles pour la taille de la police */
 }
 
 .categories-grid {
   display: flex;
   justify-content: space-between;
-  gap: 20px;
+  gap: 2%; /* Utilisez des pourcentages pour l'espacement */
 }
 
 .category-card {
   background-color: rgba(255, 255, 255, 0.1);
   border-radius: 8px;
-  padding: 15px;
+  padding: 2%; /* Utilisez des pourcentages pour le padding */
   text-align: center;
   flex: 1; /* Chaque carte prend une part égale de l'espace disponible */
-  min-width: 150px; /* Ajustez cette valeur selon vos besoins */
+  /* min-width: 15%; /* Ajustez cette valeur selon vos besoins */
 }
 
 .category-icon {
-  width: 50px;
-  height: 50px;
-  margin-bottom: 10px;
+  width: 10vw; /* Utilisez des unités flexibles pour la taille des icônes */
+  height: 10vw; /* Utilisez des unités flexibles pour la taille des icônes */
+  margin-bottom: 2%; /* Utilisez des pourcentages pour les marges */
 }
 
 .experience-bar-container {
   background-color: rgba(255, 255, 255, 0.2);
-  height: 20px;
+  height: 2vw; /* Utilisez des unités flexibles pour la hauteur */
   border-radius: 10px;
-  margin-top: 10px;
+  margin-top: 2%; /* Utilisez des pourcentages pour les marges */
   overflow: hidden;
 }
 
@@ -50,6 +54,6 @@
 
 .experience-text {
   display: block;
-  margin-top: 5px;
-  font-size: 14px;
+  margin-top: 2%; /* Utilisez des pourcentages pour les marges */
+  font-size: 1.5vw; /* Utilisez des unités flexibles pour la taille de la police */
 }

@@ -68,17 +68,19 @@ function App() {
         loadAvatar(result.user.uid);
       })
       .catch((error) => {
-        console.error("Erreur lors de la connexion:", error);
+        console.error("Erreur lors de la connexion avec Google:", error);
       });
   };
 
   const handleSignOut = () => {
-    signOut(auth).then(() => {
-      setUser(null);
-      setAvatar(null);
-    }).catch((error) => {
-      console.error("Erreur lors de la déconnexion:", error);
-    });
+    signOut(auth)
+      .then(() => {
+        setUser(null);
+        setAvatar(null);
+      })
+      .catch((error) => {
+        console.error("Erreur lors de la déconnexion:", error);
+      });
   };
 
   const updateAttribute = (category, experienceGained) => {

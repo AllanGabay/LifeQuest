@@ -97,9 +97,9 @@ const AvatarDisplay = ({ avatar }) => {
           <img src={baseAvatar} alt="Base Avatar" className="base-avatar" />
           <img src={hairstyles[hairstyle]} alt="Hairstyle" className="hairstyle" />
         </div>
-        <div className="avatar-stats" style={{ width: '300px', height: '300px' }}>
+        <div className="avatar-stats">
           <Radar data={data} options={options} />
-          <div className="stat-icons">
+          {/* <div className="stat-icons">
             {categoryImages.map((img, index) => (
               <React.Fragment key={index}>
                 <img 
@@ -122,7 +122,7 @@ const AvatarDisplay = ({ avatar }) => {
                 <Tooltip id={`stat-tooltip-${index}`} />
               </React.Fragment>
             ))}
-          </div>
+          </div> */}
         </div>
       </div>
     </div>
