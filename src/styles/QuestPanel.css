@@ -1,0 +1,54 @@
+.quest-panel {
+  background-color: rgba(0, 0, 0, 0.7);
+  border: 2px solid #ffffff;
+  border-radius: 10px;
+  padding: 1rem;
+  color: white;
+  margin: 1rem;
+}
+
+.quest-panel h2 {
+  text-align: center;
+}
+
+.quest-panel ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.quest-panel li {
+  margin: 0.5rem 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.quest-panel button {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.quest-panel button:hover {
+  background-color: #45a049;
+}
+
+.selected {
+  border: 2px solid #00ff00; /* Changez la couleur selon vos besoins */
+}
+
+/* Ajout des styles pour les icônes de catégorie */
+.category-icons {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.category-icon {
+  width: 3rem;
+  height: 3rem;
+  margin-bottom: 1rem;
+}

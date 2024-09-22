@@ -2,17 +2,20 @@ import React, { useState, useEffect } from 'react';
 import Draggable from 'react-draggable';
 import { signInWithPopup, GoogleAuthProvider, signOut } from 'firebase/auth';
 import { auth, db } from './firebaseConfig';
-import { doc, getDoc, setDoc } from 'firebase/firestore';
+import { doc, getDoc, setDoc, updateDoc } from 'firebase/firestore';
 import './App.css';
 import backgroundImage from './assets/pixel-art-background.png';
 import AvatarCreation from './components/AvatarCreation';
 import AvatarDisplay from './components/AvatarDisplay';
 import Dashboard from './components/Dashboard';
+import QuestPanel from './components/QuestPanel'; // Importer le nouveau composant
+import AdminPanel from './components/AdminPanel'; // Importez le composant AdminPanel
 
 function App() {
   const [user, setUser] = useState(null);
   const [avatar, setAvatar] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [isAdmin, setIsAdmin] = useState(false);
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged(async (user) => {
@@ -52,13 +55,45 @@ function App() {
     }
   };
 
-  const handleAvatarCreated = async (newAvatar) => {
-    console.log("Avatar créé:", newAvatar); // Ajoutez ce log
+  const handleAvatarCreated = (newAvatar) => {
     setAvatar(newAvatar);
-    if (user) {
-      await setDoc(doc(db, 'users', user.uid), { avatar: newAvatar }, { merge: true });
-    }
   };
+
+  const updateAttribute = (newAttributes) => {
+    setAvatar(prevAvatar => ({
+      ...prevAvatar,
+      attributes: newAttributes
+    }));
+  };
+
+  const addItem = (newItem) => {
+    setAvatar(prevAvatar => ({
+      ...prevAvatar,
+      items: [...prevAvatar.items, newItem]
+    }));
+  };
+
+  useEffect(() => {
+    const fetchAvatar = async () => {
+      const user = auth.currentUser;
+      if (user) {
+        // Vérifiez si l'utilisateur est votre compte Google personnel
+        if (user.email === 'gabay.allan@gmail.com') {
+          setIsAdmin(true);
+        }
+        const userDoc = await getDoc(doc(db, 'users', user.uid));
+        if (userDoc.exists()) {
+          setAvatar(userDoc.data().avatar);
+        }
+      }
+    };
+
+    fetchAvatar();
+  }, []);
+
+  if (loading) {
+    return <div>Chargement...</div>;
+  }
 
   const signInWithGoogle = () => {
     const provider = new GoogleAuthProvider();
@@ -83,34 +118,6 @@ function App() {
       });
   };
 
-  const updateAttribute = (category, experienceGained) => {
-    setAvatar(prevAvatar => {
-      const updatedAttributes = { ...prevAvatar.attributes };
-      const currentAttribute = updatedAttributes[category];
-      
-      let newExperience = currentAttribute.experience + experienceGained;
-      let newLevel = currentAttribute.level;
-      
-      while (newExperience >= 100) {
-        newLevel++;
-        newExperience -= 100;
-      }
-      
-      updatedAttributes[category] = { level: newLevel, experience: newExperience };
-      
-      const updatedAvatar = { ...prevAvatar, attributes: updatedAttributes };
-      
-      console.log("Mise à jour des attributs:", updatedAvatar); // Ajoutez ce log
-      
-      // Mise à jour dans Firebase
-      if (user) {
-        setDoc(doc(db, 'users', user.uid), { avatar: updatedAvatar }, { merge: true });
-      }
-      
-      return updatedAvatar;
-    });
-  };
-
   const renderDraggable = (content, defaultPosition, panelClass) => (
     <Draggable
       bounds="parent"
@@ -123,10 +130,6 @@ function App() {
       </div>
     </Draggable>
   );
-
-  if (loading) {
-    return <div>Chargement...</div>;
-  }
 
   return (
     <div className="app-background" style={{ backgroundImage: `url(${backgroundImage})` }}>
@@ -157,12 +160,18 @@ function App() {
               'avatar-panel'
             )}
             {renderDraggable(
-              <Dashboard attributes={avatar.attributes} />,
+              <Dashboard attributes={avatar.attributes} items={avatar.items || []} />,
               {x: 0, y: 0},
               'dashboard-panel'
             )}
+            {renderDraggable(
+              <QuestPanel avatar={avatar} updateAttribute={updateAttribute} addItem={addItem} />, // Ajouter le panneau de quêtes
+              {x: 0, y: 0},
+              'quest-panel'
+            )}
           </div>
         )}
+        {isAdmin && <AdminPanel />} {/* Affichez le panneau d'administration si l'utilisateur est un admin */}
       </div>
     </div>
   );

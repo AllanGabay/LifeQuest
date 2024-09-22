@@ -1,57 +1,56 @@
 .dashboard {
   background-color: rgba(0, 0, 0, 0.7);
   border: 2px solid #ffffff;
-  padding: 1%; /* Réduire le padding */
+  padding: 1rem;
   border-radius: 10px;
   color: white;
   margin: 0;
-  box-sizing: border-box; /* Inclure le padding et la bordure dans la taille totale */
-  height: auto; /* Ajuster la hauteur automatiquement */
-  width: 100%; /* Augmenter la largeur */
-  /* overflow: auto; Gérer le débordement */
+  box-sizing: border-box;
+  height: auto;
+  width: 100%;
 }
 
 .dashboard h2 {
   text-align: center;
-  margin-bottom: 1%; /* Réduire les marges */
-  font-size: 1.5vw; /* Augmenter la taille de la police */
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
 }
 
 .categories-grid {
   display: flex;
   justify-content: space-between;
-  gap: 1%; /* Réduire l'espacement */
+  gap: 1rem;
 }
 
 .category-card {
   background-color: rgba(255, 255, 255, 0.1);
   border-radius: 8px;
-  padding: 1%; /* Réduire le padding */
+  padding: 1rem;
   text-align: center;
- /* flex: 1; *//* Chaque carte prend une part égale de l'espace disponible */
-  /* min-width: 15%; Augmenter la largeur minimale */
+  flex: 1;
+  min-width: 15%;
 }
 
 .category-icon {
-  width: 4vw; /* Réduire la taille des icônes */
-  height: 4vw; /* Réduire la taille des icônes */
-  margin-bottom: 1%; /* Réduire les marges */
+  width: 3rem;
+  height: 3rem;
+  margin-bottom: 1rem;
 }
 
 .category-card h3 {
-  font-size: 0.6vw; /* Augmenter la taille de la police pour les titres des catégories */
-  margin: 0.5% 0; /* Ajouter des marges pour espacer les titres */
+  font-size: 1rem;
+  margin: 0.5rem 0;
 }
 
 .level-text {
-  font-size: 0.5vw; /* Augmenter la taille de la police */
+  font-size: 0.875rem;
 }
 
 .experience-bar-container {
   background-color: rgba(255, 255, 255, 0.2);
-  height: 1vw; /* Réduire la hauteur */
+  height: 0.625rem;
   border-radius: 10px;
-  margin-top: 15%; /* Réduire les marges */
+  margin-top: 1rem;
   overflow: hidden;
 }
 
@@ -63,7 +62,5 @@
 }
 
 .experience-text {
-  /* display: block;
-  margin-top: 1%; Réduire les marges */
-  font-size: 0.5vw; /* Augmenter la taille de la police */
+  font-size: 0.875rem;
 }

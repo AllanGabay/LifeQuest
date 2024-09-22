@@ -1,6 +1,6 @@
 .avatar-creation {
   position: absolute;
-  width: 30%;
+  width: 35%; /* Augmenter la largeur pour s'adapter au contenu */
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -13,6 +13,13 @@
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   color: #a56b39; /* Couleur de texte plus foncée */
   box-sizing: border-box; /* Ajoutez ceci pour inclure le padding dans la largeur totale */
+  text-align: center;
+}
+
+.avatar-creation h2 {
+  margin-bottom: 20px;
+  font-family: 'Press Start 2P', cursive; /* Police RPG */
+  white-space: pre-line; /* Forcer le texte à être sur deux lignes */
 }
 
 .submit-button {
@@ -24,6 +31,7 @@
   border-radius: 5px;
   cursor: pointer;
   font-size: 16px;
+  font-family: 'Press Start 2P', cursive; /* Police RPG */
   transition: background-color 0.3s;
 }
 
@@ -41,9 +49,153 @@
 
 .attribute-row label {
   flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.attribute-row label span {
+  margin-right: 10px;
 }
 
 .attribute-row input {
-  flex: 2;
-  margin-left: 10px;
+  width: 40px;
+  text-align: center;
+  background: none; /* Pas de fond derrière les chiffres */
+  border: none; /* Pas de bordure */
+  color: #fcad36; /* Couleur verte pour les chiffres */
+  font-family: 'Press Start 2P', cursive; /* Police RPG */
+}
+
+.button-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem; /* Espace entre les boutons */
+}
+
+.increment, .decrement {
+  background: none; /* Pas de fond */
+  border: none; /* Pas de bordure */
+  color: #a56b39; /* Couleur marron pour les boutons */
+  cursor: pointer;
+  font-size: 16px;
+  font-family: 'Press Start 2P', cursive; /* Police RPG */
+}
+
+.increment:hover, .decrement:hover {
+  color: #8B4513; /* Couleur marron foncé au survol */
+}
+
+.avatar-creation .attribute-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.avatar-creation .attribute-section div {
+  margin: 0 5px;
+}
+
+.avatar-creation .navigation-buttons {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.avatar-creation .navigation-buttons button {
+  margin: 0 10px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  font-family: 'Press Start 2P', cursive; /* Police RPG */
+  padding: 10px 15px;
+  transition: background-color 0.3s;
+}
+
+.avatar-creation .navigation-buttons button:hover {
+  background-color: #45a049;
+}
+
+.attribute-row .info-button {
+  background: none;
+  border: none;
+  color: #0000FF; /* Couleur bleue pour les boutons "?" */
+  cursor: pointer;
+  font-size: 16px;
+  font-family: 'Press Start 2P', cursive; /* Police RPG */
+  margin-left: 10px; /* Espace entre le "+" et le "?" */
+  position: relative;
+}
+
+.attribute-row .info-button:hover .tooltip {
+  display: block;
+}
+
+.tooltip {
+  display: none;
+  position: absolute;
+  top: -10px;
+  left: 110%;
+  width: 400px; /* Augmenté pour plus d'espace */
+  background-color: #000;
+  color: #fff;
+  text-align: center; /* Centrer le texte */
+  padding: 15px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+  font-family: 'Press Start 2P', cursive; /* Police RPG */
+  font-size: 12px; /* Augmenté pour une meilleure lisibilité */
+  line-height: 1.4; /* Ajouté pour plus d'espacement entre les lignes */
+  z-index: 1;
+  white-space: pre-wrap;
+  border: 2px solid #fff;
+}
+
+.remaining-points {
+  font-family: 'Press Start 2P', cursive;
+  color: #a56b39;
+  margin-bottom: 20px; /* Augmenté pour plus d'espace */
+  font-size: 14px;
+}
+
+.avatar-preview {
+  position: relative;
+  width: 10rem;
+  height: 10rem;
+  margin-bottom: 1rem;
+}
+
+.base-avatar, .hairstyle, .beard {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.avatar-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.avatar-controls button {
+  padding: 0.5rem 1rem;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.avatar-controls button:hover {
+  background-color: #45a049;
 }

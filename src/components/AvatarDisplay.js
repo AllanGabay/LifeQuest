@@ -3,20 +3,23 @@ import { Radar } from 'react-chartjs-2';
 import { Chart as ChartJS, RadialLinearScale, PointElement, LineElement, Filler, Tooltip as ChartTooltip, Legend } from 'chart.js';
 import { Tooltip } from 'react-tooltip';
 import 'react-tooltip/dist/react-tooltip.css';
-import '../styles/AvatarDisplay.css'; // Assurez-vous d'importer le fichier CSS
+import '../styles/AvatarDisplay.css';
+
+// Importez toutes les images nécessaires
 import baseAvatar from '../assets/base-avatar.png';
-import hairstyle1 from '../assets/hairstyle1.png';
-import hairstyle2 from '../assets/hairstyle2.png';
-import bienetre from '../assets/bienetre.png';
-import efficacite from '../assets/efficacite.png';
-import maitrise from '../assets/maitrise.png';
-import interaction from '../assets/interaction.png';
-import resilience from '../assets/resilience.png';
+import hairstyle0 from '../assets/null1.png';
+import hairstyle1 from '../assets/blond1.png';
+import hairstyle2 from '../assets/brown1.png';
+import hairstyle3 from '../assets/cap1.png';
+import hairstyle4 from '../assets/dollarhat.png';
+import beard0 from '../assets/null1.png';
+import beard1 from '../assets/beard1.png';
+import beard2 from '../assets/moustache1.png';
+
+const hairstyles = [hairstyle0, hairstyle1, hairstyle2, hairstyle3, hairstyle4];
+const beards = [beard0, beard1, beard2];
 
 ChartJS.register(RadialLinearScale, PointElement, LineElement, Filler, ChartTooltip, Legend);
-
-const hairstyles = [hairstyle1, hairstyle2];
-const categoryImages = [bienetre, efficacite, maitrise, interaction, resilience];
 
 const categories = [
   { name: 'Bien-être', description: "Mesure ton équilibre entre ton corps et ton esprit. Améliore ta capacité à récupérer et réduit les pénalités liées à la fatigue ou au stress." },
@@ -27,7 +30,7 @@ const categories = [
 ];
 
 const AvatarDisplay = ({ avatar }) => {
-  const { hairstyle, attributes } = avatar;
+  const { hairstyle, beard, attributes } = avatar;
 
   console.log("Attributs de l'avatar:", attributes); // Ajoutez ce log pour vérifier les attributs
 
@@ -97,6 +100,7 @@ const AvatarDisplay = ({ avatar }) => {
           <div className="avatar-image">
             <img src={baseAvatar} alt="Base Avatar" className="base-avatar" />
             <img src={hairstyles[hairstyle]} alt="Hairstyle" className="hairstyle" />
+            <img src={beards[beard]} alt="Beard" className="beard" />
           </div>
           <div className="avatar-stats">
             <Radar data={data} options={options} />

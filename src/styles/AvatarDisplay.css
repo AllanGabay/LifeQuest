@@ -2,27 +2,24 @@
   background-color: rgba(0, 0, 0, 0.7);
   border: 2px solid #ffffff;
   border-radius: 10px;
-  padding: 2%; /* Utilisez des pourcentages pour le padding */
+  padding: 2%;
   margin: 0;
   display: inline-block;
-  box-sizing: border-box; /* Inclure le padding et la bordure dans la taille totale */
-  /* height: auto; /* Ajuster la hauteur automatiquement */
-  /* width: 80%; /* Augmenter la largeur */
-  /* overflow: auto; Gérer le débordement */ 
+  box-sizing: border-box;
 }
 
 .avatar-display {
   display: flex;
   align-items: center;
   justify-content: space-around;
-  flex-direction: column; /* Ajouté pour permettre une disposition verticale */
+  flex-direction: column;
 }
 
 .avatar-image {
   position: relative;
-  width: 8vw; /* Réduire la taille de l'image */
-  height: 8vw; /* Réduire la taille de l'image */
-  margin-bottom: 2%; /* Ajouté pour espacer les éléments */
+  width: 8vw;
+  height: 8vw;
+  margin-bottom: 2%;
 }
 
 .base-avatar,
@@ -36,8 +33,6 @@
 
 .avatar-stats {
   position: relative;
-  /* width: 100%; /* Réduire la largeur du radar */
-  /* height: 100%; Réduire la hauteur du radar */ 
 }
 
 .stat-icons {
@@ -51,8 +46,8 @@
 
 .stat-icon {
   pointer-events: auto;
-  width: 5vw; /* Réduire la taille des icônes */
-  height: 5vw; /* Réduire la taille des icônes */
+  width: 5vw;
+  height: 5vw;
 }
 
 /* Styles pour les tooltips */
@@ -63,7 +58,7 @@
   color: white !important;
   padding: 8px 12px !important;
   border-radius: 4px !important;
-  font-size: 1.5vw !important; /* Utilisez des unités flexibles pour la taille de la police */
-  max-width: 25vw !important; /* Utilisez des unités flexibles pour la largeur maximale */
+  font-size: 1.5vw !important;
+  max-width: 25vw !important;
   text-align: center !important;
 }
