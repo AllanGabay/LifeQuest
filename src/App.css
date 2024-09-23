@@ -75,6 +75,7 @@ body {
   gap: 1rem;
   width: 100%;
   height: 100%;
+  flex-wrap: wrap; /* Permet aux panneaux de s'empiler sur les petits écrans */
 }
 
 .draggable-panel {
@@ -84,17 +85,9 @@ body {
   padding: 1rem;
   display: flex;
   flex-direction: column;
-}
-
-.drag-handle {
-  cursor: move;
-  background-color: #4CAF50;
-  color: white;
-  padding: 0.5rem;
-  margin-bottom: 1rem;
-  text-align: center;
-  border-radius: 5px;
-  width: 100%;
+  width: 100%; /* Assurez-vous que les panneaux prennent toute la largeur disponible */
+  max-width: 400px; /* Limitez la largeur maximale des panneaux */
+  box-sizing: border-box;
 }
 
 .avatar-panel {
@@ -110,7 +103,10 @@ body {
   position: absolute;
   top: 20px;
   left: 20px;
-  z-index: 1000;
+  z-index: 1000; /* Assurez-vous que cette section reste au-dessus des autres éléments */
+  background-color: rgba(0, 0, 0, 0.7); /* Ajoutez un fond pour plus de lisibilité */
+  padding: 1rem; /* Ajoutez du padding pour un meilleur espacement */
+  border-radius: 10px; /* Ajoutez des coins arrondis */
 }
 
 .rpg-dialog {
@@ -251,4 +247,18 @@ body {
 
 .draggable-content {
   cursor: move;
+}
+
+/* Media query pour les petits écrans */
+@media (max-width: 768px) {
+  .panels-container {
+    flex-direction: column; /* Empilez les panneaux verticalement sur les petits écrans */
+    top: 10%; /* Ajustez la position verticale */
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .draggable-panel {
+    max-width: 90%; /* Réduisez la largeur maximale des panneaux sur les petits écrans */
+  }
 }

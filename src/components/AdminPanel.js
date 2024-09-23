@@ -1,4 +1,6 @@
 import React from 'react';
+import Draggable from 'react-draggable'; // Importer Draggable
+import '../styles/AdminPanel.css'; // Assurez-vous d'importer le fichier CSS
 import { db } from '../firebaseConfig';
 import { collection, addDoc } from 'firebase/firestore';
 
@@ -17,10 +19,13 @@ const AdminPanel = () => {
 
   return (
     <div className="admin-panel">
+      {/* Supprimez l'un des boutons de déplacement */}
       <h2>Panneau d'administration</h2>
-      <button onClick={createCategories}>Créer Catégories</button>
-      <button onClick={createQuests}>Créer Quêtes</button>
-      <button onClick={createItems}>Créer Items</button>
+      <div className="admin-buttons">
+        <button onClick={createCategories}>Créer Catégories</button>
+        <button onClick={createQuests}>Créer Quêtes</button>
+        <button onClick={createItems}>Créer Items</button>
+      </div>
     </div>
   );
 };

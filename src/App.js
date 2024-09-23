@@ -22,8 +22,15 @@ function App() {
       setUser(user);
       if (user) {
         await loadAvatar(user.uid);
+        // Vérifiez si l'utilisateur est votre compte Google personnel
+        if (user.email === 'gabay.allan@gmail.com') {
+          setIsAdmin(true);
+        } else {
+          setIsAdmin(false);
+        }
       } else {
         setAvatar(null);
+        setIsAdmin(false);
       }
       setLoading(false);
     });
@@ -73,24 +80,6 @@ function App() {
     }));
   };
 
-  useEffect(() => {
-    const fetchAvatar = async () => {
-      const user = auth.currentUser;
-      if (user) {
-        // Vérifiez si l'utilisateur est votre compte Google personnel
-        if (user.email === 'gabay.allan@gmail.com') {
-          setIsAdmin(true);
-        }
-        const userDoc = await getDoc(doc(db, 'users', user.uid));
-        if (userDoc.exists()) {
-          setAvatar(userDoc.data().avatar);
-        }
-      }
-    };
-
-    fetchAvatar();
-  }, []);
-
   if (loading) {
     return <div>Chargement...</div>;
   }
@@ -112,6 +101,7 @@ function App() {
       .then(() => {
         setUser(null);
         setAvatar(null);
+        setIsAdmin(false);
       })
       .catch((error) => {
         console.error("Erreur lors de la déconnexion:", error);
@@ -156,22 +146,26 @@ function App() {
           <div className="panels-container">
             {renderDraggable(
               <AvatarDisplay avatar={avatar} />,
-              {x: 0, y: 0},
+              {x: 0, y: 100}, // Ajustez la position par défaut pour éviter la superposition
               'avatar-panel'
             )}
             {renderDraggable(
               <Dashboard attributes={avatar.attributes} items={avatar.items || []} />,
-              {x: 0, y: 0},
+              {x: 0, y: 100}, // Ajustez la position par défaut pour éviter la superposition
               'dashboard-panel'
             )}
             {renderDraggable(
-              <QuestPanel avatar={avatar} updateAttribute={updateAttribute} addItem={addItem} />, // Ajouter le panneau de quêtes
-              {x: 0, y: 0},
+              <QuestPanel attributes={avatar.attributes} updateAttribute={updateAttribute} addItem={addItem} />,
+              {x: 0, y: 100}, // Ajustez la position par défaut pour éviter la superposition
               'quest-panel'
             )}
           </div>
         )}
-        {isAdmin && <AdminPanel />} {/* Affichez le panneau d'administration si l'utilisateur est un admin */}
+        {isAdmin && renderDraggable(
+          <AdminPanel />,
+          {x: 0, y: 100}, // Ajustez la position par défaut pour éviter la superposition
+          'admin-panel'
+        )}
       </div>
     </div>
   );

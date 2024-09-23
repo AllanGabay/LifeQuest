@@ -36,7 +36,10 @@ const AvatarDisplay = ({ avatar }) => {
 
   const categoryOrder = ['Bien-être', 'Efficacité', 'Maîtrise', 'Interaction', 'Résilience'];
 
-  const orderedData = categoryOrder.map(category => attributes[category]?.level || 0);
+  const orderedData = categoryOrder.map(category => {
+    const attribute = attributes.find(attr => attr.category_name === category);
+    return attribute ? attribute.level : 0;
+  });
 
   const data = {
     labels: categoryOrder,
