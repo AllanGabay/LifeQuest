@@ -1,10 +1,8 @@
 .avatar-display-container {
   background-color: rgba(0, 0, 0, 0.7);
-  border: 2px solid #ffffff;
+  border: 0.1vh solid #ffffff;
   border-radius: 10px;
-  padding: 2%;
-  margin: 0;
-  display: inline-block;
+   display: inline-block;
   box-sizing: border-box;
 }
 
@@ -13,13 +11,12 @@
   align-items: center;
   justify-content: space-around;
   flex-direction: column;
+  width: fit-content;
 }
 
 .avatar-image {
   position: relative;
-  width: 8vw;
-  height: 8vw;
-  margin-bottom: 2%;
+  margin: 0%;
 }
 
 .base-avatar,
@@ -33,6 +30,7 @@
 
 .avatar-stats {
   position: relative;
+  margin: 0%;
 }
 
 .stat-icons {

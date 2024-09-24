@@ -31,6 +31,24 @@
   background-color: #45a049;
 }
 
+.admin-data {
+  margin-top: 1rem;
+  text-align: left;
+}
+
+.admin-data h3 {
+  margin-bottom: 0.5rem;
+}
+
+.admin-data ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.admin-data li {
+  margin-bottom: 0.5rem;
+}
+
 .drag-handle {
   cursor: move;
   background-color: #4CAF50;
@@ -39,4 +57,44 @@
   margin-bottom: 1rem;
   text-align: center;
   border-radius: 5px;
+}
+
+.admin-data form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.admin-data form input,
+.admin-data form select,
+.admin-data form button {
+  padding: 0.5rem;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.admin-data form button {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.admin-data form button:hover {
+  background-color: #45a049;
+}
+
+.admin-buttons button {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 0.5rem;
+}
+
+.admin-buttons button:hover {
+  background-color: #45a049;
 }

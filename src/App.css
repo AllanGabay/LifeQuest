@@ -1,27 +1,43 @@
 .App {
   text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  position: relative; /* Ensure the App container is the reference for draggable bounds */
+}
+
+
+.App-header {
+  background-color: #282c34;
+padding-left: 2vw; 
+  color: rgb(255, 255, 255);
+  display: flex;
+  width: 100%;
+  z-index: 1; /* Ensure the header is above other elements */
+  height: 0px;
+}
+
+.App.logged-in .App-header {
+  flex-direction: column;
+  background: none;
+  align-items: flex-start; /* Align items to the left in column direction */;
+
+}
+
+.App-content {
+  flex: 1;
+  position: relative;
+  width: 100%;
+}
+
+.background-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1; /* Place l'image en arrière-plan */
 }
 
 .App-link {
@@ -79,15 +95,12 @@ body {
 }
 
 .draggable-panel {
-  background-color: rgba(0, 0, 0, 0.7);
-  border: 2px solid #ffffff;
-  border-radius: 10px;
-  padding: 1rem;
-  display: flex;
-  flex-direction: column;
-  width: 100%; /* Assurez-vous que les panneaux prennent toute la largeur disponible */
-  max-width: 400px; /* Limitez la largeur maximale des panneaux */
-  box-sizing: border-box;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 8px;
+  padding: 1vh;
+  margin: 0.5vh;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  position: absolute; /* Ensure panels can be moved freely */
 }
 
 .avatar-panel {
@@ -103,7 +116,7 @@ body {
   position: absolute;
   top: 20px;
   left: 20px;
-  z-index: 1000; /* Assurez-vous que cette section reste au-dessus des autres éléments */
+  z-index: -1; /* Assurez-vous que cette section reste en dessous des autres éléments */
   background-color: rgba(0, 0, 0, 0.7); /* Ajoutez un fond pour plus de lisibilité */
   padding: 1rem; /* Ajoutez du padding pour un meilleur espacement */
   border-radius: 10px; /* Ajoutez des coins arrondis */
@@ -222,7 +235,6 @@ body {
 
 @import 'react-tooltip/dist/react-tooltip.css';
 
-/* ... autres styles ... */
 
 .react-tooltip {
   z-index: 9999;
@@ -237,12 +249,6 @@ body {
 
 .drag-handle {
   cursor: move;
-  background-color: #4CAF50;
-  color: white;
-  padding: 0.5rem;
-  margin-bottom: 1rem;
-  text-align: center;
-  border-radius: 5px;
 }
 
 .draggable-content {
@@ -261,4 +267,63 @@ body {
   .draggable-panel {
     max-width: 90%; /* Réduisez la largeur maximale des panneaux sur les petits écrans */
   }
+
+  .admin-panel {
+    top: 50%; /* Ajustez la position verticale pour éviter la superposition */
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+.login-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #282c34;
+}
+
+.login-container {
+  text-align: center;
+}
+
+.login-image {
+  width: 90%;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.login-title {
+  font-size: 48px;
+  color: white;
+  margin-bottom: 20px;
+  font-family: 'Press Start 2P', cursive;
+}
+
+.login-button {
+  background-color: #4285F4;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.login-button:hover {
+  background-color: #357AE8;
+}
+
+/* Styles pour la page après connexion */
+.App.logged-in {
+    background-image: url('./assets/pixel-art-background.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+
+}
+
+.App.logged-in .App-content {
 }

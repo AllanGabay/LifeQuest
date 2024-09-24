@@ -8,8 +8,8 @@ import backgroundImage from './assets/pixel-art-background.png';
 import AvatarCreation from './components/AvatarCreation';
 import AvatarDisplay from './components/AvatarDisplay';
 import Dashboard from './components/Dashboard';
-import QuestPanel from './components/QuestPanel'; // Importer le nouveau composant
-import AdminPanel from './components/AdminPanel'; // Importez le composant AdminPanel
+import QuestPanel from './components/QuestPanel';
+import AdminPanel from './components/AdminPanel';
 
 function App() {
   const [user, setUser] = useState(null);
@@ -21,8 +21,7 @@ function App() {
     const unsubscribe = auth.onAuthStateChanged(async (user) => {
       setUser(user);
       if (user) {
-        await loadAvatar(user.uid);
-        // Vérifiez si l'utilisateur est votre compte Google personnel
+        await loadAvatar(user.email);
         if (user.email === 'gabay.allan@gmail.com') {
           setIsAdmin(true);
         } else {
@@ -38,27 +37,27 @@ function App() {
     return () => unsubscribe();
   }, []);
 
-  const loadAvatar = async (userId) => {
-    const docRef = doc(db, 'users', userId);
+  const loadAvatar = async (userEmail) => {
+    const docRef = doc(db, 'users', userEmail);
     const docSnap = await getDoc(docRef);
     if (docSnap.exists() && docSnap.data().avatar) {
       let loadedAvatar = docSnap.data().avatar;
-      
-      // Vérifier et convertir la structure si nécessaire
+
       if (typeof loadedAvatar.attributes['Bien-être'] === 'number') {
         const convertedAttributes = {};
         for (const [key, value] of Object.entries(loadedAvatar.attributes)) {
           convertedAttributes[key] = { level: value, experience: 0 };
         }
         loadedAvatar = { ...loadedAvatar, attributes: convertedAttributes };
-        
-        // Mettre à jour Firebase avec la nouvelle structure
-        await setDoc(doc(db, 'users', userId), { avatar: loadedAvatar }, { merge: true });
+
+        await setDoc(doc(db, 'users', userEmail), { avatar: loadedAvatar }, { merge: true });
       }
-      
+
       setAvatar(loadedAvatar);
+      console.log("L'utilisateur a déjà créé un avatar.");
     } else {
       setAvatar(null);
+      console.log("L'utilisateur n'a pas encore créé d'avatar.");
     }
   };
 
@@ -89,7 +88,7 @@ function App() {
     signInWithPopup(auth, provider)
       .then((result) => {
         setUser(result.user);
-        loadAvatar(result.user.uid);
+        loadAvatar(result.user.email);
       })
       .catch((error) => {
         console.error("Erreur lors de la connexion avec Google:", error);
@@ -121,53 +120,42 @@ function App() {
     </Draggable>
   );
 
-  return (
-    <div className="app-background" style={{ backgroundImage: `url(${backgroundImage})` }}>
-      <div className="rpg-container">
-        <div className="welcome-section">
-          <div className="rpg-dialog">
-            <h1>Bienvenue, {user ? user.displayName : 'aventurier'}!</h1>
-            <p>Prêt pour l'aventure ?</p>
-          </div>
-          {user ? (
-            <button className="rpg-button" onClick={handleSignOut}>
-              Se déconnecter
-            </button>
-          ) : (
-            <button className="rpg-button" onClick={signInWithGoogle}>
-              Se connecter avec Google
-            </button>
-          )}
+  if (!user) {
+    return (
+      <div className="login-page">
+        <div className="login-container">
+          <img src={backgroundImage} alt="LifeQuest" className="login-image" />
+          <h1 className="login-title">LifeQuest</h1>
+          <button onClick={signInWithGoogle} className="login-button">Sign In with Google</button>
         </div>
-        {user && !avatar && (
-          <AvatarCreation onAvatarCreated={handleAvatarCreated} />
-        )}
-        {user && avatar && avatar.attributes && Object.keys(avatar.attributes).length > 0 && (
-          <div className="panels-container">
-            {renderDraggable(
-              <AvatarDisplay avatar={avatar} />,
-              {x: 0, y: 100}, // Ajustez la position par défaut pour éviter la superposition
-              'avatar-panel'
-            )}
-            {renderDraggable(
-              <Dashboard attributes={avatar.attributes} items={avatar.items || []} />,
-              {x: 0, y: 100}, // Ajustez la position par défaut pour éviter la superposition
-              'dashboard-panel'
-            )}
-            {renderDraggable(
-              <QuestPanel attributes={avatar.attributes} updateAttribute={updateAttribute} addItem={addItem} />,
-              {x: 0, y: 100}, // Ajustez la position par défaut pour éviter la superposition
-              'quest-panel'
+      </div>
+    );
+  }
+
+  return (
+    <div className="App logged-in">
+ 
+      <header className="App-header">
+        <h1>LifeQuest</h1>
+        <button onClick={handleSignOut} className="logout-button">Se déconnecter</button>
+      </header>
+        {user && (
+          <div className="App-content">
+            {!avatar ? (
+              <AvatarCreation onAvatarCreated={handleAvatarCreated} />
+            ) : (
+              <>
+                {renderDraggable(<AvatarDisplay avatar={avatar} />, { x: 300, y: 100 }, 'avatar-display')}
+                {renderDraggable(<Dashboard attributes={avatar.attributes} items={avatar.items} />, { x: 500, y: 100 }, 'dashboard')}
+                {renderDraggable(<QuestPanel attributes={avatar.attributes} updateAttribute={updateAttribute} addItem={addItem} />, { x: 700, y: 100 }, 'quest-panel')}
+                {isAdmin && renderDraggable(<AdminPanel />, { x: 600, y: 200 }, 'admin-panel')}
+              </>
             )}
           </div>
         )}
-        {isAdmin && renderDraggable(
-          <AdminPanel />,
-          {x: 0, y: 100}, // Ajustez la position par défaut pour éviter la superposition
-          'admin-panel'
-        )}
-      </div>
+   
     </div>
+
   );
 }
 

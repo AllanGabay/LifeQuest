@@ -27,19 +27,23 @@ const AvatarCreation = ({ onAvatarCreated }) => {
 
   useEffect(() => {
     const fetchCategories = async () => {
-      const categoriesCollection = collection(db, 'categories');
-      const categorySnapshot = await getDocs(categoriesCollection);
-      const categoryList = categorySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-      setCategories(categoryList);
+      try {
+        const categoriesCollection = collection(db, 'categories');
+        const categorySnapshot = await getDocs(categoriesCollection);
+        const categoryList = categorySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+        setCategories(categoryList);
 
-      // Initialize attributes with default values
-      const initialAttributes = categoryList.map(category => ({
-        category_id: category.id,
-        category_name: category.name, // Ajout du nom de la catégorie
-        experience: 0,
-        level: 0
-      }));
-      setAttributes(initialAttributes);
+        // Initialize attributes with default values
+        const initialAttributes = categoryList.map(category => ({
+          category_id: category.id,
+          category_name: category.name,
+          experience: 0,
+          level: 0
+        }));
+        setAttributes(initialAttributes);
+      } catch (error) {
+        console.error("Erreur lors de la récupération des catégories:", error);
+      }
     };
 
     fetchCategories();
@@ -65,9 +69,9 @@ const AvatarCreation = ({ onAvatarCreated }) => {
           hairstyle: selectedHairstyle,
           beard: selectedBeard,
           attributes: attributes,
-          items: [], // Initialement vide, les items seront ajoutés plus tard
+          items: [],
         };
-        await setDoc(doc(db, 'users', user.uid), {
+        await setDoc(doc(db, 'users', user.email), {
           avatar: newAvatar,
           pseudonym: pseudonym
         }, { merge: true });

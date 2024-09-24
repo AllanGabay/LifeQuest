@@ -5,6 +5,9 @@ import { Tooltip } from 'react-tooltip';
 import 'react-tooltip/dist/react-tooltip.css';
 import '../styles/AvatarDisplay.css';
 
+// Register the necessary components
+ChartJS.register(RadialLinearScale, PointElement, LineElement, Filler, ChartTooltip, Legend);
+
 // Importez toutes les images nécessaires
 import baseAvatar from '../assets/base-avatar.png';
 import hairstyle0 from '../assets/null1.png';
@@ -19,14 +22,12 @@ import beard2 from '../assets/moustache1.png';
 const hairstyles = [hairstyle0, hairstyle1, hairstyle2, hairstyle3, hairstyle4];
 const beards = [beard0, beard1, beard2];
 
-ChartJS.register(RadialLinearScale, PointElement, LineElement, Filler, ChartTooltip, Legend);
-
 const categories = [
   { name: 'Bien-être', description: "Mesure ton équilibre entre ton corps et ton esprit. Améliore ta capacité à récupérer et réduit les pénalités liées à la fatigue ou au stress." },
-  { name: 'Efficacité', description: "Représente ta capacité à organiser et réaliser tes tâches. Augmente la rapidité et la précision dans l'accomplissement des tâches." },
-  { name: 'Maîtrise', description: "Te permet de débloquer des compétences spéciales. Augmente la vitesse d'apprentissage et renforce la capacité à acquérir de nouvelles compétences." },
-  { name: 'Interaction', description: "Mesure ta capacité à tisser des liens et à communiquer. Améliore les chances de succès lors des collaborations et des négociations." },
-  { name: 'Résilience', description: "La force qui te permet de continuer face aux difficultés. Réduit les impacts des échecs et augmente les récompenses pour les séries de réussites." },
+  { name: 'Productivité', description: "Représente ta capacité à organiser et réaliser tes tâches. Augmente la rapidité et la précision dans l'accomplissement de tes objectifs." },
+  { name: 'Apprentissage', description: "Te permet d'augmenter la vitesse d'apprentissage et renforce la capacité à acquérir de nouvelles compétences." },
+  { name: 'Interaction', description: "Mesure ta capacité à tisser des liens et à communiquer. Améliore les chances de succès lors de collaborations et de négociations." },
+  { name: 'Résilience', description: "La force qui te permet de continuer face aux difficultés. Réduit l'impacts des échecs grace aux séries de réussites." },
 ];
 
 const AvatarDisplay = ({ avatar }) => {
@@ -34,12 +35,16 @@ const AvatarDisplay = ({ avatar }) => {
 
   console.log("Attributs de l'avatar:", attributes); // Ajoutez ce log pour vérifier les attributs
 
-  const categoryOrder = ['Bien-être', 'Efficacité', 'Maîtrise', 'Interaction', 'Résilience'];
+  const categoryOrder = ['Bien-être', 'Productivité', 'Apprentissage', 'Interaction', 'Résilience'];
 
   const orderedData = categoryOrder.map(category => {
     const attribute = attributes.find(attr => attr.category_name === category);
     return attribute ? attribute.level : 0;
   });
+
+  const maxLevel = Math.max(...orderedData);
+  const suggestedMax = Math.ceil(maxLevel + (maxLevel / 8));
+  console.log("Suggested Max Level:", suggestedMax); // Ajoutez ce log pour vérifier le calcul suggestedMax
 
   const data = {
     labels: categoryOrder,
@@ -73,12 +78,15 @@ const AvatarDisplay = ({ avatar }) => {
             size: 12
           }
         },
+        max: suggestedMax, // Définir le max ici
         ticks: {
           display: false,
           beginAtZero: true,
-          max: Math.max(...orderedData) + 1, // Ajuster le maximum en fonction du niveau le plus élevé
-          min: 0
-        }
+          stepSize: 1,
+          color: 'rgba(255, 255, 255, 0.8)',
+          backdropColor: 'rgba(0, 0, 0, 0.5)',
+          backdropPadding: 2
+        },
       }
     },
     plugins: {

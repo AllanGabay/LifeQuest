@@ -1,6 +1,7 @@
 .avatar-creation {
-  position: absolute;
-  width: 35%; /* Augmenter la largeur pour s'adapter au contenu */
+  position: fixed; /* Utilisez fixed pour centrer sur la page */
+  width: auto; /* Utilisez auto pour que la largeur s'ajuste au contenu */
+  max-width: 90%; /* Limitez la largeur maximale pour éviter de déborder */
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
